@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In or Up form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form {
+            margin: 50px 50px;
+        }
+
+        .form-grid1 {
+            display: flex;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px 0px 8px 8px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:invalid {
+            border: 1px solid rgb(255, 0, 0);
+        }
+
+        input:valid {
+            border: 1px solid rgb(106, 255, 0);
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 13px 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        button[type="button"] {
+            background-color: #ccc;
+        }
+
+        button[type="submit"]:hover,
+        button[type="button"]:hover {
+            background-color: #000000;
+            color: #ccc;
+        }
+
+        button:active {
+            scale: 0.8;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            margin-top: 90px;
+            filter: drop-shadow(5px 6px 10px black);
+        }
+
+        .main>div {
+            width: 30%;
+        }
+
+        .login {
+            background-color: red;
+            padding: 50px 0px;
+            visibility: hidden;
+            border-radius: 0px 10px 10px 0px;
+        }
+
+        .reg {
+            background-color: blue;
+            visibility: visible;
+            border-radius: 10px 0px 0px 10px;
+        }
+
+        .child1 {
+            position: fixed;
+            left: 20%;
+            height: 100%;
+            background-color: rgb(88, 88, 230);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 0px;
+            border-radius: 10px 0px 0px 10px;
+        }
+
+        .child2 {
+            position: absolute;
+            left: 50%;
+            height: 100%;
+            background-color: rgb(231, 87, 87);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 0px;
+            border-radius: 0px 10px 10px 0px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .form {
+                margin: 10px 10px;
+            }
+
+            .form-grid1 {
+                display: flex;
+            }
+
+            button {
+                margin-top: 10px;
+                padding: 13px 20px;
+                background-color: white;
+                color: black;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                width: fit-content;
+            }
+
+            .main>div {
+                width: 50%;
+            }
+
+            .main {
+                margin-top: 90px;
+                filter: drop-shadow(5px 6px 10px black);
+            }
+
+            input {
+                width: 90%;
+                padding: 8px 0px 8px 8px;
+                border: 1px solid #ffffff;
+                border-radius: 5px;
+                outline: none;
+            }
+
+            .child1 {
+                position: fixed;
+                left: 0%;
+                height: 100%;
+                background-color: rgb(88, 88, 230);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: 0px;
+                border-radius: 10px 0px 0px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="child1" id="child1"><button type="submit" value="save" name="register" id="tog1"
+                onclick="register()">Sign Up</button></div>
+        <div class="reg" id="reg">
+            <form class="form" id="form1" method="POST">
+                <div class="form-grid">
+                    <div>
+                        <label for="FullName">Full Name</label>
+                        <input type="text" id="FullName" name="FullName" required placeholder="Fullname"
+                            pattern="[a-zA-Z ]{1,9}">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    </div>
+
+                    <div><label for="phoneNumber">Phone Number</label>
+                        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="6666699999"
+                            pattern="[0-9]{10,10}">
+                    </div>
+
+                    <div><label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="email@gmail.com">
+                    </div>
+                </div>
+                <div class="form-grid1">
+                    <button type="submit" value="save" name="register" disabled>Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <div class="child2" id="child2"><button type="submit" value="save" name="register" id="tog2"
+                onclick="login()">Sign In</button></div>
+        <div class="login" id="login">
+            <form class="form" id="form1" method="POST">
+                <div class="form-grid">
+                    <div>
+                        <label for="emailorPhone">Email or Phone</label>
+                        <input type="text" id="emailorPhone" name="emailorPhone" required placeholder="Email or Phone"
+                            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                    </div>
+                </div>
+                <div class="form-grid1">
+                    <button type="submit" value="save" name="register" disabled>Sign In</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+<script>
+    function login() {
+        document.getElementById("child2").style.visibility = "hidden";
+        var logbtn = document.getElementById("child1");
+        if (logbtn.style.visibility != "visible") {
+            document.getElementById("child1").style.visibility = "visible";
+        }
+        document.getElementById("login").style.visibility = "visible";
+    }
+    function register() {
+        document.getElementById("child1").style.visibility = "hidden";
+        var logbtn = document.getElementById("child2");
+        if (logbtn.style.visibility != "visible") {
+            document.getElementById("child2").style.visibility = "visible";
+        }
+        document.getElementById("reg").style.visibility = "visible";
+    }
+</script>
+
+</html>
